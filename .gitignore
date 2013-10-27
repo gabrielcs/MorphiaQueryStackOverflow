@@ -1,0 +1,12 @@
+bin
+
+target
+
+
+
+# Ignore all dotfiles except for .gitignore
+ and .travis.yml
+.*
+!.gitignore
+
+!.travis.yml
