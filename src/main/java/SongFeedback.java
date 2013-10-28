@@ -44,13 +44,16 @@ public class SongFeedback {
 		return "SongFeedback [feedbackType=" + feedbackType + ", userId="
 				+ userId + ", someOtherProperty=" + someOtherProperty + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((feedbackType == null) ? 0 : feedbackType.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(someOtherProperty);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
@@ -65,6 +68,9 @@ public class SongFeedback {
 			return false;
 		SongFeedback other = (SongFeedback) obj;
 		if (feedbackType != other.feedbackType)
+			return false;
+		if (Double.doubleToLongBits(someOtherProperty) != Double
+				.doubleToLongBits(other.someOtherProperty))
 			return false;
 		if (userId == null) {
 			if (other.userId != null)
